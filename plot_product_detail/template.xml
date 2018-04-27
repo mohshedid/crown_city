@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report
+            id="plot_product_detail_id" 
+            model="product.template"
+            name="plot_product_detail.fabrics_invoice"
+            file="plot_product_detail.fabrics_invoice"
+            report_type="qweb-html"
+            string="Product Detail"/> 
+    </data>
+</openerp>

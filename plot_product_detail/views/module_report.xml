@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>   
+
+        <template id="fabrics_invoice">
+
+            <t t-call="report.html_container">
+
+                <t t-call="report.external_layout">
+                    
+
+                    <div class="page">
+
+                        <style>
+                            .main-data {
+                                width: 100%;
+                            }
+                            .center-data {
+                                width: 1000px;
+                                margin: 0px auto;
+                            }
+                            table,td, th {
+                                border: 1px solid;
+                                border-collapse: collapse;
+                                padding: 8px;
+                                text-align: center;
+                            }
+                            h3 {
+                                text-decoration: underline;
+                            }
+                            .heading {
+                                text-align: center;
+                            }
+                            .no-margin {
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                            }
+                            .crown-city {
+                                width: 90%;
+                                float: left;
+                                margin: 20px 0px 20px 0px;
+                                text-align: right;
+                            }
+                            .solid {
+                                font-weight: bold;
+                                margin-left: 10px;
+                                margin-right: 10px;
+                            }
+                            .liquid {
+                                margin-left: 10px;
+                            }
+                            .subject {
+                                margin: 20px 0px 20px 0px;
+                                text-align: center;
+                            }
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                            }
+
+                        </style>
+
+                        <div class="main-data">
+
+                            <div class="center-data">
+
+                                <div class="heading">
+                                    <h3 class="no-margin">Jehlum and Punjab Extension Chinar Bagh Housing Scheme</h3>
+                                    <p class="no-margin">Electrical Contractors, Transmission &amp; Destribution lines, Housing scheme Developer</p>
+                                </div>
+
+                                <div class="crown-city">
+                                    <p class="no-margin"><span class="solid">Dated:</span><span class="liquid" t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/></p>
+                                </div>
+
+                                <br class="clearfloat"/>
+                                
+                                
+                                <table width="100%">
+                                    <tr>
+                                        
+                                        <th>Sr #</th>
+                                        <th>Khatauni/Khasra/Kanal</th>
+                                        <th>Size</th>
+                                        <th>Rate Per Marla</th>
+                                        <th>Total Price</th>
+                                       
+                                    </tr>
+
+                                    <t t-set="sr_no" t-value="1" />
+                                    <t t-set="total" t-value="0" />
+                                    <t t-foreach="docs" t-as="o">
+
+                                        <tr>
+
+                                            <td><span class="liquid" t-esc="sr_no"></span>
+                                                <t t-set="sr_no" t-value="sr_no+1" />
+                                            </td>
+                                            <td><span class="liquid" t-esc="o.name"></span></td>
+                                            <td><span class="liquid" t-esc="o.plot_size.size"></span></td>
+                                            <td><span class="liquid" t-esc="'{0:,.2f}'.format(float(o.plot_rate_marla))"></span></td>
+                                            <td><span class="liquid" t-esc="'{0:,.2f}'.format(float(o.total_plot_price))"></span></td>
+                                            <t t-set="total" t-value="total+o.total_plot_price" />
+
+                                        </tr>
+
+                                    </t>
+
+                                        <tr>
+
+                                            <td style="font-weight:bold" colspan="4">Total</td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,.2f}'.format(float(total))"></span>
+                                            </td>
+                                        </tr>
+
+                                </table>
+
+                                    <div class="subject">
+                                        <p class="no-margin"><span class="liquid">Off: 467- M block,Model Town extension, Lahore <strong>Ph:</strong>92-42-35171077,35171077,<strong>Fax:</strong>92-42-35219177.</span></p>
+                                        <p class="no-margin"><span class="liquid"><strong>E.mail:</strong>comnmercialconstructionco@yahoo.com.</span></p>
+                                    </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </template>
+
+    </data>
+
+</openerp>
